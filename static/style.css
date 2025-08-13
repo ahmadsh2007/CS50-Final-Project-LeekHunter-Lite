@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --bg-color: #f8f9fa; /* Very light gray background */
+    --primary-color: #ffffff; /* White for primary containers */
+    --secondary-color: #6c757d; /* Muted gray for secondary text */
+    --text-color: #0d1b2a; /* Dark navy from logo for primary text */
+    --accent-color: #4f772d; /* Leek green from logo */
+    --accent-hover-color: #6a994e; /* Lighter green for hover */
+    --border-color: #dee2e6; /* Light gray for borders */
+    
+    /* --- Analysis colors updated to be slightly darker --- */
+    --error-bg: #f5c6cb; /* Darker pastel red */
+    --warning-bg: #ffeeba; /* Darker pastel yellow */
+    --info-bg: #bee5eb; /* Darker pastel blue */
+    
+    /* One Dark Pro Theme Colors */
+    --one-dark-bg: #282c34; /* Dark background for code */
+    --one-dark-text: #abb2bf; /* Light gray text for code */
+    --one-dark-border: #3a404c; /* Slightly lighter border */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    margin: 0 auto;
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+header {
+    padding: 10px 25px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This creates the centered effect */
+}
+
+.header-logo {
+    height: 50px;
+    width: auto;
+}
+
+.header-center {
+    text-align: center;
+}
+
+.header-right {
+    width: 50px;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 1.8em;
+}
+
+header p {
+    margin: 0;
+    color: var(--secondary-color);
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    min-height: 0;
+    background-color: var(--bg-color);
+}
+
+.code-editor-container, .results-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+}
+
+#language-selector, #analyze-button, .github-button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#analyze-button {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#analyze-button:hover {
+    background-color: var(--accent-hover-color);
+    border-color: var(--accent-hover-color);
+}
+
+.github-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f8f9fa;
+    text-decoration: none;
+}
+
+.github-button:hover {
+    background-color: #e9ecef;
+}
+
+.github-logo {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-color);
+}
+
+/* Code input textarea styling (One Dark Pro) */
+#code-input {
+    width: 100%;
+    background-color: var(--one-dark-bg);
+    color: var(--one-dark-text);
+    border: 1px solid var(--one-dark-border);
+    border-radius: 5px;
+    padding: 15px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    box-sizing: border-box;
+    flex-grow: 1;
+    resize: none;
+}
+
+#analysis-res {
+    padding: 6px 15px;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.results-header h2 {
+    margin: 0;
+}
+
+#loader {
+    border: 3px solid #e9ecef;
+    border-radius: 50%;
+    border-top: 3px solid var(--accent-color);
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#results-table-container {
+    overflow-y: auto;
+    flex-grow: 1;
+    min-height: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#results-table th, #results-table td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 14px;
+}
+
+#results-table tr:last-child td {
+    border-bottom: none;
+}
+
+#results-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+.severity-error { background-color: var(--error-bg); color: #721c24; }
+.severity-warning { background-color: var(--warning-bg); color: #856404; }
+.severity-info { background-color: var(--info-bg); color: #0c5460; }
+
+.severity-cell { text-transform: capitalize; font-weight: bold; }
+
+/* Styling for code snippets in the table (One Dark Pro) */
+td pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    background-color: var(--one-dark-bg);
+    color: var(--one-dark-text);
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#no-issues-message {
+    text-align: center;
+    padding: 15px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    color: #155724;
+    font-size: 14px;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    color: var(--secondary-color);
+    font-size: 12px;
+    border-top: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.hidden {
+    display: none;
+}
