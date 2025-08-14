@@ -10,7 +10,38 @@ This project is a **minimal viable product (MVP)** demonstrating AI-powered code
 
 ## **Demo Screenshot**
 
-*(Replace with your screenshot if available)*
+<p><a href="#" onclick="document.getElementById('video-gallery').style.display='block'; return false;">
+  <img src="DEMO/safe_calc.png" width="960" alt="safe calculator">
+</a></p>
+
+<details>
+<summary>Demo Videos</summary>
+
+### Discount Bug in C
+<video width="960" controls>
+  <source src="DEMO/Demo_videos/Dbug.c.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Discount Bug in Python
+<video width="960" controls>
+  <source src="DEMO/Demo_videos/Dbug.py.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Simple Index and Malloc Error
+<video width="960" controls>
+  <source src="DEMO/Demo_videos/Simple_index_malloc.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+### Error
+<video width="960" controls>
+  <source src="DEMO/Demo_videos/Errors.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+</details>
 
 ---
 
@@ -30,20 +61,35 @@ This project is a **minimal viable product (MVP)** demonstrating AI-powered code
 LeekHunter-Lite/
 │
 ├── app.py                  # Flask backend
+├── LICENSE
+├── README.md
 ├── requirements.txt        # Dependencies
+├── DEMO/
+│   ├── Demo_videos/
+│   │   ├── Dbug.c.mp4
+│   │   ├── Dbug.py.mp4
+│   │   ├── Errors.mp4
+│   │   └── Simple_index_malloc.mp4
+│   ├── discount_bug.c
+│   ├── discount_bug.py
+│   ├── hello.cpp
+│   ├── list_index.py
+│   ├── memory_leak.c
+│   ├── safe_calc.png
+│   └── safe_calc.py
+├── static/
+│   ├── leekmind-logo.jpg   # Logo / branding
+│   ├── main.js             # Frontend JS
+│   └── style.css           # Stylesheet
 ├── templates/
 │   └── index.html          # Frontend HTML
-├── static/
-│   ├── main.js             # Frontend JS
-│   ├── style.css           # Stylesheet
-│   └── leekmind-logo.jpg   # Logo / branding
 └── tests/
     ├── discount_bug.c
-    ├── memory_leak.c
-    ├── logic_bug.c
     ├── discount_bug.py
+    ├── division_bug.py
     ├── list_index.py
-    └── division_bug.py
+    ├── logic_bug.c
+    └── memory_leak.c
 ```
 
 ---
