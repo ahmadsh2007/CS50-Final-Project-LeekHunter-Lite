@@ -18,28 +18,16 @@ This project is a **minimal viable product (MVP)** demonstrating AI-powered code
 <summary>Demo Videos</summary>
 
 ### Discount Bug in C
-<video width="960" controls>
-  <source src="DEMO/Demo_videos/Dbug.c.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Discount Bug in C](Demo/Demo_videos/Dbug.c.gif)
 
 ### Discount Bug in Python
-<video width="960" controls>
-  <source src="DEMO/Demo_videos/Dbug.py.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Discount Bug in Python](Demo/Demo_videos/Dbug.py.gif)
 
 ### Simple Index and Malloc Error
-<video width="960" controls>
-  <source src="DEMO/Demo_videos/Simple_index_malloc.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Simple Index and Malloc Error](Demo/Demo_videos/Simple_index_malloc.gif)
 
 ### Error
-<video width="960" controls>
-  <source src="DEMO/Demo_videos/Errors.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Error](Demo/Demo_videos/Errors.gif)
 
 </details>
 
