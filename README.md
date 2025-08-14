@@ -18,16 +18,16 @@ This project is a **minimal viable product (MVP)** demonstrating AI-powered code
 <summary>Demo Videos</summary>
 
 ### Discount Bug in C
-![Discount Bug in C](Demo/Demo_videos/Dbug.c.gif)
+![Discount Bug in C](DEMO/Demo_videos/Dbug.c.gif)
 
 ### Discount Bug in Python
-![Discount Bug in Python](Demo/Demo_videos/Dbug.py.gif)
+![Discount Bug in Python](DEMO/Demo_videos/Dbug.py.gif)
 
 ### Simple Index and Malloc Error
-![Simple Index and Malloc Error](Demo/Demo_videos/Simple_index_malloc.gif)
+![Simple Index and Malloc Error](DEMO/Demo_videos/Simple_index_malloc.gif)
 
 ### Error
-![Error](Demo/Demo_videos/Errors.gif)
+![Error](DEMO/Demo_videos/Errors.gif)
 
 </details>
 
