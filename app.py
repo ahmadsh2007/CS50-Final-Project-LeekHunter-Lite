@@ -1,21 +1,22 @@
 import os
 import json
-import google.generativeai as genai
 from flask import Flask, request, jsonify, render_template
+from dotenv import load_dotenv
+import google.generativeai as genai
+
+# Load environment variables
+load_dotenv()
+API_KEY = os.getenv("GOOGLE_API_KEY")
 
 app = Flask(__name__)
 
-# ! WARNING: Hard-coding your API key is a major security risk.
-# * Anyone with access to this code will have your key.
-# TODO Use environment variables for production or shared code.
-API_KEY = "" 
 genai.configure(api_key=API_KEY)
 
 generation_config = {
     "temperature": 0.2,
     "top_p": 1,
     "top_k": 1,
-    "max_output_tokens": 655366,
+    "max_output_tokens": 65536,
     "response_mime_type": "application/json", # Ensures the output is JSON
 }
 
