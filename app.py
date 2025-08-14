@@ -15,12 +15,12 @@ generation_config = {
     "temperature": 0.2,
     "top_p": 1,
     "top_k": 1,
-    "max_output_tokens": 2048,
+    "max_output_tokens": 655366,
     "response_mime_type": "application/json", # Ensures the output is JSON
 }
 
 model = genai.GenerativeModel(
-    model_name="gemini-2.5-flash-lite",
+    model_name="gemini-2.5-flash",
     generation_config=generation_config
 )
 
@@ -54,6 +54,13 @@ def build_prompt(code, lang):
 def index():
     """Renders the main page."""
     return render_template('index.html')
+
+'''
+@app.route('/old')
+def OLDindex():
+    """Renders the main page."""
+    return render_template('OLDindex.html')
+'''
 
 @app.route('/analyze', methods=['POST'])
 def analyze_code():

@@ -4,67 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LeekHunter Lite - Quick Scan</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>   
 </head>
-<body>
-    <div class="container">
-        <header>
-            <img src="{{ url_for('static', filename='leekmind-logo.jpg') }}" alt="Logo" class="header-logo">
-            <div class="header-center">
-                <h1>LeekHunter Lite 🕵️</h1>
-                <p>Static Code Analysis Powered by Gemini</p>
+<body class="text-slate-800">
+
+    <div class="container flex flex-col h-screen">
+        <header class="flex-shrink-0 bg-white p-4 shadow-sm border-b border-slate-200 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <img src="{{ url_for('static', filename='leekmind-logo.jpg') }}" alt="LeekHunter Logo" class="h-12 w-auto">
+                <div>
+                    <h1 class="text-xl font-bold text-slate-900 font-mono">LeekHunter Lite 🕵️</h1>
+                    <p class="text-sm text-slate-500">Static Code Analysis Powered by Gemini</p>
+                </div>
             </div>
-            <!-- Centering -->
-            <div class="header-right"></div>
+            <a href="https://github.com/ahmadsh2007/CS50-Final-Project-LeekHunter-Lite" target="_blank" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 bg-slate-100 rounded-md hover:bg-slate-200 transition-colors" aria-label="View source on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+                GitHub
+            </a>
         </header>
 
-        <main>
-            <!-- Left side: Code Editor -->
-            <div class="code-editor-container">
-                <div class="controls">
-                    <select id="language-selector">
+        <main class="flex-grow grid md:grid-cols-2 gap-4 p-4 min-h-0">
+            <div class="bg-white rounded-lg shadow-sm border border-slate-200 flex flex-col p-4 gap-4">
+                <div class="controls flex items-center gap-2 flex-wrap">
+                    <input type="file" id="file-input" class="hidden" accept=".py,.c,.h">
+                    <button id="upload-button" class="px-3 py-2 text-sm font-medium text-slate-700 bg-slate-100 rounded-md hover:bg-slate-200 transition-colors">Upload File</button>
+                    <select id="language-selector" class="px-3 py-2 text-sm font-medium text-slate-700 bg-slate-100 rounded-md hover:bg-slate-200 transition-colors focus:ring-2 focus:ring-emerald-500 focus:outline-none">
                         <option value="python">Python</option>
                         <option value="c">C</option>
                     </select>
-                    <button id="analyze-button">Analyze Code</button>
-                    <a href="https://github.com/ahmadsh2007/CS50-Final-Project-LeekHunter-Lite" target="_blank" class="github-button" aria-label="View source on GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="github-logo">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
-                        </svg>
-                        GitHub
-                    </a>
+                    <button id="analyze-button" class="flex-grow sm:flex-grow-0 ml-auto px-4 py-2 text-sm rounded-md transition-colors btn-analyze-mvp">Analyze Code</button>
                 </div>
-                <textarea id="code-input" placeholder="Paste your code here..."></textarea>
+                <div class="code-editor-wrapper flex-grow flex min-h-0 border border-slate-300 rounded-md overflow-hidden bg-[#282c34]">
+                    <textarea id="line-numbers" readonly class="w-12 text-right pr-2 py-3 text-slate-500 bg-[#282c34] resize-none outline-none border-r border-slate-600"></textarea>
+                    <textarea id="code-input" placeholder="Paste your code here or upload a file..." class="flex-grow p-3 bg-[#282c34] text-slate-300 resize-none outline-none"></textarea>
+                </div>
             </div>
 
-            <!-- Right side: Analysis Results -->
-            <div class="results-container">
-                <div class="results-header">
-                    <h2 id="analysis-res">Analysis Results</h2>
-                    <div id="loader" class="loader hidden"></div>
+            <div class="bg-white rounded-lg shadow-sm border border-slate-200 flex flex-col p-4 gap-4">
+                <div class="results-header flex justify-between items-center flex-shrink-0">
+                    <h2 class="text-lg font-bold text-slate-900">Analysis Results</h2>
+                    <div id="loader" class="loader hidden w-5 h-5 border-2 border-slate-200 border-t-emerald-600 rounded-full animate-spin"></div>
                 </div>
-                <div id="results-table-container">
-                    <table id="results-table">
-                        <thead>
+                <div id="results-container" class="flex-grow overflow-y-auto min-h-0 border border-slate-200 rounded-lg">
+                     <div id="no-issues-message" class="hidden h-full flex flex-col items-center justify-center text-center p-4 bg-emerald-50 text-emerald-700 rounded-md">
+                        <svg class="w-12 h-12 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                        <p class="font-semibold">No issues found. Great job!</p>
+                    </div>
+                    <table id="results-table" class="w-full text-sm text-left">
+                        <thead class="text-xs text-slate-700 uppercase bg-slate-100 sticky top-0">
                             <tr>
-                                <th>Line</th>
-                                <th>Severity</th>
-                                <th>Message</th>
-                                <th>Suggestion</th>
+                                <th scope="col" class="px-4 py-3 w-16">Line</th>
+                                <th scope="col" class="px-4 py-3 w-28">Severity</th>
+                                <th scope="col" class="px-4 py-3">Message</th>
+                                <th scope="col" class="px-4 py-3">Suggestion</th>
                             </tr>
                         </thead>
                         <tbody id="results-body">
-                            <!-- Results will be dynamically inserted here -->
                         </tbody>
                     </table>
-                    <p id="no-issues-message" class="hidden">No issues found. Great job!</p>
                 </div>
             </div>
         </main>
-        
-        <footer>
-            <p>LeekHunter MVP Version.</p>
+
+        <footer class="flex-shrink-0 text-center py-3 border-t border-slate-200">
+             <p class="text-xs text-slate-500">LeekHunter MVP Version.</p>
         </footer>
     </div>
 </body>
