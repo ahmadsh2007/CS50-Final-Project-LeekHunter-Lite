@@ -1,75 +1,76 @@
 /* Custom styles to complement Tailwind and meet MVP requirements */
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f8fafc; /* slate-50 */
-    margin: 0; /* Ensure no default body margin */
+  font-family: "Inter", sans-serif;
+  background-color: #f8fafc; /* slate-50 */
+  margin: 0; /* Ensure no default body margin */
 }
 
-#code-input, #line-numbers, .code-suggestion {
-    font-family: 'Roboto Mono', monospace;
+#code-input,
+#line-numbers,
+.code-suggestion {
+  font-family: "Roboto Mono", monospace;
 }
 
 /* --- Custom class for the MVP "Analyze Code" button color --- */
 .btn-analyze-mvp {
-    background-color: #4f772d; /* Original MVP accent color */
-    border-color: #4f772d;
-    color: #ffffff;
-    font-weight: bold;
+  background-color: #4f772d; /* Original MVP accent color */
+  border-color: #4f772d;
+  color: #ffffff;
+  font-weight: bold;
 }
 .btn-analyze-mvp:hover {
-    background-color: #6a994e; /* Original MVP hover color */
-    border-color: #6a994e;
+  background-color: #6a994e; /* Original MVP hover color */
+  border-color: #6a994e;
 }
 
 /* Custom scrollbar styling for a cleaner look */
-::-webkit-scrollbar { 
-    width: 8px; 
-    height: 8px; 
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
-::-webkit-scrollbar-track { 
-    background: #f1f5f9; 
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
 }
-::-webkit-scrollbar-thumb { 
-    background: #cbd5e1; 
-    border-radius: 4px; 
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover { 
-    background: #94a3b8; 
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
-#line-numbers::-webkit-scrollbar { 
-    display: none; 
+#line-numbers::-webkit-scrollbar {
+  display: none;
 }
-#line-numbers { 
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+#line-numbers {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* --- Make the container take full width --- */
 .container {
-    max-width: none !important;
-    width: 100%;
-    margin: 0;
-    padding: 0; /* Remove default padding for full edge-to-edge layout */
+  max-width: none !important;
+  width: 100%;
+  margin: 0;
+  padding: 0; /* Remove default padding for full edge-to-edge layout */
 }
 
 /* Apply padding to children instead of the main container */
-.container > header, 
-.container > main, 
+.container > header,
+.container > main,
 .container > footer {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-
 
 /* Adjust main to take remaining height */
 main {
-    flex-grow: 1;
-    min-height: 0;
+  flex-grow: 1;
+  min-height: 0;
 }
 
 @media (max-width: 768px) {
-    main {
-        flex-direction: column; /* Stack columns on smaller screens */
-    }
+  main {
+    flex-direction: column; /* Stack columns on smaller screens */
+  }
 }
